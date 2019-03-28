@@ -1,0 +1,14 @@
+
+to make the intra.42.fr address reroute to 46.19.122.85
+we add "46.19.122.85    intra.42.fr" to the file "/etc/hosts"
+
+
+it becomes like that :
+10.23.1.1       cdn.42.fr
+10.23.1.1       cdn.intra.42.fr
+127.0.0.1       localhost
+255.255.255.255 broadcasthost
+::1             localhost
+46.19.122.85    intra.42.fr
+
+

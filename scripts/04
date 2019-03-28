@@ -1,0 +1,43 @@
+#!/bin/bash
+
+ch=0
+user=
+server=
+port=
+pathfrom=
+pathto=
+while [ "$ch" != "1" ] && [ "$ch" != "2" ]
+do
+	printf "1 - download file\n2 - upload file\n your choice: "
+	read ch
+done
+if [ "$ch" = "1" ]; then
+	echo "download a file via ssh"
+	printf "enter username: "
+	read user
+	printf "enter adress/server: "
+	read server
+	printf "enter port: "
+	read port
+	printf "enter the path of the file: "
+	read pathfrom
+	printf "enter the path where to put the file: "
+	read pathto
+	scp -P "$port" "$user"@"$server":"$pathfrom" "$pathto"
+	exit 1
+fi
+if [ "$ch" = "2" ]; then
+	echo "upload a file to your ssh server"
+	printf "enter username: "
+	read user
+	printf "enter adress/server: "
+	read server
+	printf "enter port: "
+	read port
+	printf "enter the path of the file: "
+	read pathfrom
+	printf "enter the path where to put the file: "
+	read pathto
+	scp -P "$port" "$pathfrom" "$user"@"$server":"$pathto"
+	exit 2
+fi

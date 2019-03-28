@@ -1,0 +1,2 @@
+# after apt-get install ssh
+service ssh status

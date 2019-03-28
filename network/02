@@ -1,0 +1,2 @@
+echo "\n2-a:" && ifconfig en0 | grep "broadcast" | cut -d ' ' -f 6
+echo "\n2-b:" && ping 10.11.255.255 -c 2 | grep "icmp" | cut -d ' ' -f 4 | tr -d ":"

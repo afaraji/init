@@ -1,0 +1,7 @@
+#  after configuring rsa keys using command "ssh-keygen -t rsa
+#  files (~/.ssh/id_rsa and id_rsa.pub) are created containing
+#  privite and public keys of RSA.
+#  after using command "ssh-copy-id" from remote desktop
+#  the file (~/.ssh/authorized_keys) is generated also (knowen_hosts)
+#
+~/.ssh/authorized_keys

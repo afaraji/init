@@ -1,0 +1,2 @@
+ifconfig en1 | grep "ether" | cut -d ' ' -f 2
+# networksetup -listallhardwareports | awk 'NR == 8 {print}' | cut -d ' ' -f 3

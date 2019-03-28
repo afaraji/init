@@ -1,0 +1,5 @@
+####### alternatives to show version ######
+#	/etc/issue
+#	/etc/issue.net
+#	/etc/os-release
+/etc/debian_version

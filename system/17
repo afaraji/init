@@ -1,0 +1,2 @@
+# ssh login@host_ip-adress -p PORT
+ssh fanasser@10.11.100.234 -p 22

@@ -1,0 +1,2 @@
+# alternative: service sshd status | grep "Main PID" | cut -d ' ' -f 4
+pidof sshd

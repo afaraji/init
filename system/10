@@ -1,0 +1,2 @@
+# other commands to list partitions [sfdisk -l || cfdisk || lsblk]
+fdisk -l

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo  "-------------------------------------------"
+echo -e "\033[0;31m  login\033[0m          ,|,\033[0;31mUID\033[0m,  |,\033[0;31mpath\033[0m" | column -t -s ','
+echo "-------------------------------------------"
+#	default sort by UID
+if [ "$1" = "" ] || [ "$1" = "uid" ] || [ "$1" = "2" ]; then
+	getent passwd | sort -t ':' -nk3 | awk -F ':' '{print $1 " |","\033[0;32m"$3"\033[0m" " |", $6}' | column -t 
+fi
+#	sort by login uncomment the next line
+if [ "$1" = "login" ] || [ "$1" = "1" ]; then	
+	getent passwd | awk -F ':' '{print "\033[0;32m"$1"\033[0m" " |",$3 " |", $6}' | column -t | sort -k1
+fi
+#	sort by path
+if [ "$1" = "path" ] || [ "$1" = "3" ]; then
+	getent passwd | awk -F ':' '{print $1 " |",$3 " |", "\033[0;32m"$6"\033[0m" }' | column -t | sort -k5
+fi

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+nb=
+us=
+pts=
+printf "\033[0;31m**** this script delet an active user (logged) ****\033[0m\n"
+echo "which ACTIVE user to delete"
+who | awk '{print NR " - " $1}'
+echo -n "enter the number of user to delet: "
+read nb
+us=$(who | awk -v var="$nb" 'NR == var {print $1}')
+if [ "$us" = "" ]; then
+	echo "invalid number"
+	exit 0
+fi
+pts=$(who | awk -v var="$nb" 'NR == var {print $2}')
+echo "your account has been terminated, you have no longer access to debian" | write $us $pts
+su -c "skill -KILL -u $us && userdel -r -f $us 2>> /var/ActivUsertlog.log"
+exit 1

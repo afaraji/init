@@ -1,0 +1,8 @@
+#	with graphic session, enter login and password.
+#
+#	with ssh sesion after connecting with user1 using the command
+#	"ssh user1@10.11.100.234 -p 22".
+#	to switch user if already connected by using 
+#	the command "su user2" followed by "password"
+#	or
+#	use "ssh user2@10.11.100.234 -p 22" if not

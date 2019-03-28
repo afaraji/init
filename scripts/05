@@ -1,0 +1,50 @@
+#!/bin/bash
+while [ 1 ]
+do
+	while [ "$ch" != "1" ] && [ "$ch" != "2" ] && [ "$ch" != "3" ] && [ "$ch" != "4" ] && [ "$ch" != "5" ] && [ "$ch" != "0" ]
+	do
+		printf "select your choice:\n1 - update\n2 - upgrade\n3 - install package\n4 - remove package\n5 - list of packages\n0 - exit\nyour choice: "
+		read ch
+	done
+	case $ch in
+		1)
+			echo "updating..."
+			su -c "apt-get update"
+			clear
+			printf "update done successfuly..\n\n"
+			;;
+		2)
+			echo "upgrading..."
+			su -c "apt-get upgrade"
+			clear
+			printf "update done successfuly..\n\n"
+			;;
+		3)
+			echo -n "enter package name: "
+			read package
+			echo "package install"
+			su -c "apt-get install $package"
+			clear
+			printf "$package has been installed\n\n"
+			;;
+		4)
+			echo -n "enter package name: "
+			read package
+			echo "package remove"
+			su -c "apt-get remove --purge $package"
+			printf "$package has been deleted\n\n"
+			clear
+			;;
+		5)
+			echo "list of installed packages:"
+			su -c "apt list --installed | column -t| more"
+			;;
+		*)
+			echo "exiting..."
+			sleep 1
+			clear
+			exit 0 
+			;;
+	esac
+	ch=99
+done

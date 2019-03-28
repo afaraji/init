@@ -1,0 +1,30 @@
+#!/bin/bash
+user=
+var=
+echo -n "list of all users: "
+getent passwd {1000..29999} | awk -F ':' '{printf "%s | ", $1}'
+echo ""
+echo -n "Please enter user to delete: "
+read user
+if [ -n "$user" ]; then
+	echo -e "\033[1;31m **** Warning! ****\033[0m" 
+	echo "you are about to delet $user"
+	echo -n "procceed ? (y/n): "
+	read var
+	if [ "$var" != "y" ]; then
+		echo "Aborted."
+		exit 1
+	else
+		su -c "userdel -r $user 2>> /var/myscriptlog.log"
+		var=$?
+		if [ "$var" -eq "0" ]; then
+			echo "$user has been deleted successful."
+		else
+			echo "Error."
+			echo "Check /var/myscriptlog.log for more informations"
+		fi
+	fi
+else
+	echo "no user entred"
+fi
+exit 0
